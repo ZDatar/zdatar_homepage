@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZDatar — Your Data. Your Ownership.</title>
+  <meta name="description" content="ZDatar empowers you to control, share, and earn from your mobile data with full ownership. Built on fast, low‑fee blockchain rails." />
+  <meta property="og:title" content="ZDatar — Your Data. Your Ownership." />
+  <meta property="og:description" content="Reclaim your digital value. Control, delete, or sell your mobile data. Transparent, encrypted, decentralized." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#e9faff',
+              100: '#ccf5ff',
+              200: '#99ecff',
+              300: '#66e3ff',
+              400: '#33daff',
+              500: '#00d1ff',
+              600: '#00a8cc',
+              700: '#007f99',
+              800: '#005666',
+              900: '#002e33'
+            },
+            vio: '#7B2CBF',
+            deep: '#0D1B2A'
+          },
+          boxShadow: {
+            glow: '0 0 40px rgba(0, 209, 255, 0.35)'
+          },
+          backgroundImage: {
+            'hero-grad': 'radial-gradient(60% 80% at 70% 20%, rgba(123,44,191,.35), transparent 60%), radial-gradient(60% 80% at 20% 10%, rgba(0,209,255,.25), transparent 60%), linear-gradient(180deg, #0b1020 0%, #0a0f1d 60%, #0b132b 100%)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Subtle animated background particles */
+    .dot { position: absolute; border-radius: 9999px; opacity: .25; animation: float 14s linear infinite; }
+    @keyframes float { from { transform: translateY(0) } to { transform: translateY(-120vh) } }
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.08); }
+    .card { @apply glass rounded-2xl p-6 border shadow-lg; }
+  </style>
+</head>
+<body class="bg-deep text-slate-100 antialiased selection:bg-brand-300/30 selection:text-white">
+  <!-- NAVBAR -->
+  <header class="fixed inset-x-0 top-0 z-50 bg-[#0b0f1d]/70 backdrop-blur border-b border-white/5">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#top" class="flex items-center gap-3 group">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-vio shadow-glow">
+            <!-- Simple logo mark -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 12L12 4l8 8-8 8-8-8Z" stroke="white" stroke-width="1.3"/>
+              <circle cx="12" cy="12" r="2.5" fill="#00d1ff"/>
+            </svg>
+          </span>
+          <span class="text-lg font-semibold tracking-wide">ZDatar</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm">
+          <a href="#why" class="hover:text-brand-200">Why</a>
+          <a href="#how" class="hover:text-brand-200">How It Works</a>
+          <a href="#features" class="hover:text-brand-200">Features</a>
+          <a href="#token" class="hover:text-brand-200">Token</a>
+          <a href="#ecosystem" class="hover:text-brand-200">Ecosystem</a>
+          <a href="#roadmap" class="hover:text-brand-200">Roadmap</a>
+          <a href="#community" class="hover:text-brand-200">Community</a>
+          <a href="#waitlist" class="ml-2 inline-flex items-center rounded-xl bg-brand-500 px-4 py-2 font-medium text-slate-900 hover:bg-brand-400 shadow-glow">Join Waitlist</a>
+        </nav>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-lg p-2 hover:bg-white/5" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/5">
+      <div class="mx-auto max-w-7xl px-4 py-3 space-y-3 text-sm">
+        <a href="#why" class="block py-1">Why</a>
+        <a href="#how" class="block py-1">How It Works</a>
+        <a href="#features" class="block py-1">Features</a>
+        <a href="#token" class="block py-1">Token</a>
+        <a href="#ecosystem" class="block py-1">Ecosystem</a>
+        <a href="#roadmap" class="block py-1">Roadmap</a>
+        <a href="#community" class="block py-1">Community</a>
+        <a href="#waitlist" class="block py-2 font-medium text-brand-200">Join Waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="relative isolate overflow-hidden bg-hero-grad pt-28 sm:pt-32">
+    <!-- floating dots -->
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="dot w-1 h-1 bg-brand-500 left-[10%] top-[90%]" style="animation-duration:18s"></div>
+      <div class="dot w-1 h-1 bg-brand-300 left-[30%] top-[95%]" style="animation-duration:16s"></div>
+      <div class="dot w-1 h-1 bg-brand-400 left-[60%] top-[92%]" style="animation-duration:22s"></div>
+      <div class="dot w-1 h-1 bg-vio left-[80%] top-[97%]" style="animation-duration:19s"></div>
+    </div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-center pb-16">
+        <div class="text-center lg:text-left">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+            Your Data. <span class="text-brand-300">Your Ownership.</span>
+          </h1>
+          <p class="mt-5 text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0">
+            ZDatar gives you full control to collect, encrypt, and monetize non‑sensitive mobile data. Transparent trades on-chain, user‑first privacy off-chain.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:justify-center lg:justify-start">
+            <a href="#waitlist" class="inline-flex items-center justify-center rounded-2xl bg-brand-500 px-6 py-3 text-slate-900 font-semibold hover:bg-brand-400 shadow-glow">Join Waitlist</a>
+            <a href="#how" class="inline-flex items-center justify-center rounded-2xl border border-white/15 px-6 py-3 hover:border-brand-300/60 hover:text-brand-200">Explore How It Works</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="absolute -inset-10 bg-gradient-to-tr from-brand-500/10 via-vio/10 to-transparent blur-3xl"></div>
+          <div class="relative mx-auto w-full max-w-md aspect-[3/5] rounded-[2rem] border border-white/10 glass shadow-2xl shadow-brand-500/10">
+            <!-- Phone outline illustration + orbiting cubes -->
+            <svg viewBox="0 0 420 700" class="h-full w-full">
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#00d1ff" />
+                  <stop offset="100%" stop-color="#7B2CBF" />
+                </linearGradient>
+              </defs>
+              <rect x="60" y="30" width="300" height="640" rx="36" ry="36" fill="url(#g)" opacity="0.08"/>
+              <rect x="70" y="40" width="280" height="620" rx="28" ry="28" stroke="#66e3ff" stroke-opacity=".35" fill="none" stroke-width="2"/>
+              <!-- orbit ring -->
+              <ellipse cx="210" cy="560" rx="130" ry="28" fill="none" stroke="#00d1ff" stroke-opacity=".25" />
+              <ellipse cx="210" cy="560" rx="90" ry="18" fill="none" stroke="#00d1ff" stroke-opacity=".15" />
+              <!-- cubes -->
+              <g fill="#66e3ff" fill-opacity=".35">
+                <rect x="300" y="130" width="24" height="24"/>
+                <rect x="95" y="220" width="18" height="18"/>
+                <rect x="330" y="300" width="16" height="16"/>
+                <rect x="150" y="120" width="20" height="20"/>
+                <rect x="90" y="380" width="22" height="22"/>
+              </g>
+              <!-- network lines -->
+              <path d="M210 560 C 210 420, 210 420, 210 260" stroke="#33daff" stroke-opacity=".25" />
+              <circle cx="210" cy="260" r="4" fill="#33daff" fill-opacity=".8" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="pb-14 text-center text-sm text-slate-400">Powered by fast, low‑fee rails • Designed for privacy‑preserving data exchange</div>
+    </div>
+
+    <!-- angled divider -->
+    <div class="relative">
+      <svg class="absolute bottom-0 left-0 w-full translate-y-[1px]" viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path fill="#0b1020" d="M0,0 1440,0 1440,100 0,40Z"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why" class="relative bg-[#0b1020] py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-bold">Your mobile data is valuable — but you don’t own it.</h2>
+        <p class="mt-4 text-slate-300">Traditional apps monetize your behavior without transparency or rewards. ZDatar flips the model: <span class="text-brand-200">you</span> decide what to share and <span class="text-brand-200">you</span> earn.</p>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="card">
+          <div class="text-xl font-semibold">🧠 Big Tech captures your behavior</div>
+          <p class="mt-2 text-slate-300">Opaque data mining with zero user control or payouts.</p>
+        </div>
+        <div class="card">
+          <div class="text-xl font-semibold">🔒 No transparency</div>
+          <p class="mt-2 text-slate-300">You rarely know who accessed your data or why.</p>
+        </div>
+        <div class="card">
+          <div class="text-xl font-semibold">💸 Users earn nothing</div>
+          <p class="mt-2 text-slate-300">Your data creates value — but value bypasses you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="relative bg-gradient-to-b from-[#0b1020] to-[#0b132b] py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold">How ZDatar Works</h2>
+        <p class="mt-4 text-slate-300">Opt‑in collection → encryption & off‑chain storage → on‑chain marketplace trades.</p>
+      </div>
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        <div class="card">
+          <div class="text-sm uppercase tracking-widest text-brand-200">Step 1</div>
+          <h3 class="mt-1 text-xl font-semibold">Selective Data Collection</h3>
+          <p class="mt-2 text-slate-300">Choose categories like location traces, motion sensors, health trends, app usage patterns. Identity and finance data are excluded by design.</p>
+        </div>
+        <div class="card">
+          <div class="text-sm uppercase tracking-widest text-brand-200">Step 2</div>
+          <h3 class="mt-1 text-xl font-semibold">Encrypt & Store (Off‑Chain)</h3>
+          <p class="mt-2 text-slate-300">Data is encrypted locally (AES), keys are protected, and payloads are stored on decentralized storage (e.g., IPFS/Arweave). Proofs & policies live on‑chain.</p>
+        </div>
+        <div class="card">
+          <div class="text-sm uppercase tracking-widest text-brand-200">Step 3</div>
+          <h3 class="mt-1 text-xl font-semibold">Marketplace Trading</h3>
+          <p class="mt-2 text-slate-300">Buyers purchase anonymized datasets via smart contracts. You receive instant payouts; ZDatar takes a small transaction fee.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="relative bg-[#0b132b] py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold">Why Choose ZDatar</h2>
+        <p class="mt-4 text-slate-300">User‑first privacy, verifiable transparency, and low fees.</p>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="card">
+          <h3 class="text-lg font-semibold">🛡️ Full Ownership</h3>
+          <p class="mt-2 text-slate-300">Delete, hold, or sell your data anytime. You control the keys.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-semibold">🔍 Transparent Trades</h3>
+          <p class="mt-2 text-slate-300">Every exchange is on-chain, auditable, and policy‑bound.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-semibold">🧬 Zero Identity Exposure</h3>
+          <p class="mt-2 text-slate-300">Only non‑sensitive, anonymized data categories are eligible.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-semibold">⚡ Low Fees</h3>
+          <p class="mt-2 text-slate-300">Built on fast, low‑fee rails for mainstream usability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOKEN ECONOMY -->
+  <section id="token" class="relative bg-gradient-to-b from-[#0b132b] to-[#0b1020] py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-3xl font-bold">ZDTR Token — Powering the Data Economy</h2>
+          <p class="mt-4 text-slate-300">Users earn ZDTR when datasets are purchased. Buyers spend ZDTR to access data. A small network fee sustains the DAO and future development.</p>
+          <a href="#" class="mt-6 inline-flex rounded-2xl border border-white/15 px-5 py-3 hover:border-brand-300/60 hover:text-brand-200">Learn about ZDTR</a>
+        </div>
+        <div class="glass rounded-2xl p-8 border">
+          <!-- simple circular flow diagram -->
+          <div class="relative mx-auto h-64 w-64">
+            <div class="absolute inset-0 rounded-full border border-brand-300/40"></div>
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-500/20 px-3 py-1 rounded-full text-sm">User</div>
+            <div class="absolute top-1/2 -right-6 -translate-y-1/2 bg-brand-500/20 px-3 py-1 rounded-full text-sm">Buyer</div>
+            <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-brand-500/20 px-3 py-1 rounded-full text-sm">DAO</div>
+            <svg viewBox="0 0 200 200" class="absolute inset-0 m-auto">
+              <defs>
+                <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L6,3 z" fill="#66e3ff" />
+                </marker>
+              </defs>
+              <path d="M100,10 A90,90 0 0 1 190,100" fill="none" stroke="#66e3ff" stroke-opacity=".5" marker-end="url(#arrow)"/>
+              <path d="M190,100 A90,90 0 0 1 100,190" fill="none" stroke="#66e3ff" stroke-opacity=".5" marker-end="url(#arrow)"/>
+              <path d="M100,190 A90,90 0 0 1 100,10" fill="none" stroke="#66e3ff" stroke-opacity=".5" marker-end="url(#arrow)"/>
+            </svg>
+          </div>
+          <div class="mt-4 grid grid-cols-3 text-center text-xs text-slate-300">
+            <div><span class="font-semibold text-brand-200">User</span><br/>Contribute data → Earn ZDTR</div>
+            <div><span class="font-semibold text-brand-200">Buyer</span><br/>Spend ZDTR → Access datasets</div>
+            <div><span class="font-semibold text-brand-200">DAO</span><br/>Fee → Funds ecosystem</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM -->
+  <section id="ecosystem" class="relative bg-[#0b1020] py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold">ZDatar Ecosystem</h2>
+        <p class="mt-4 text-slate-300">A privacy‑preserving stack connecting mobile devices, decentralized storage, and an on‑chain marketplace.</p>
+      </div>
+      <div class="mt-12 grid gap-6 lg:grid-cols-5">
+        <div class="card lg:col-span-1 text-center">
+          <div class="text-sm uppercase tracking-widest text-brand-200">Source</div>
+          <h3 class="mt-2 font-semibold">Mobile App</h3>
+          <p class="mt-2 text-slate-300">Opt‑in data capture & local encryption.</p>
+        </div>
+        <div class="card lg:col-span-1 text-center">
+          <div class="text-sm uppercase tracking-widest text-brand-200">Ledger</div>
+          <h3 class="mt-2 font-semibold">Blockchain</h3>
+          <p class="mt-2 text-slate-300">Ownership, policies, & trades.</p>
+        </div>
+        <div class="card lg:col-span-1 text-center">
+          <div class="text-sm uppercase tracking-widest text-brand-200">Storage</div>
+          <h3 class="mt-2 font-semibold">IPFS / Arweave</h3>
+          <p class="mt-2 text-slate-300">Encrypted off‑chain payloads.</p>
+        </div>
+        <div class="card lg:col-span-1 text-center">
+          <div class="text-sm uppercase tracking-widest text-brand-200">Portal</div>
+          <h3 class="mt-2 font-semibold">Marketplace</h3>
+          <p class="mt-2 text-slate-300">Listing, bidding, fulfillment.</p>
+        </div>
+        <div class="card lg:col-span-1 text-center">
+          <div class="text-sm uppercase tracking-widest text-brand-200">Consumers</div>
+          <h3 class="mt-2 font-semibold">Buyers</h3>
+          <p class="mt-2 text-slate-300">Researchers, AI, IoT, analytics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap" class="relative bg-[#0b132b] py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold">Roadmap</h2>
+        <p class="mt-4 text-slate-300">Concrete milestones toward public launch and DAO governance.</p>
+      </div>
+      <ol class="mt-12 relative mx-auto max-w-3xl border-l border-white/10">
+        <li class="mb-10 ml-6">
+          <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-brand-500 text-slate-900 font-bold">1</span>
+          <h3 class="text-xl font-semibold">Q4 2025 — Prototype Mobile App</h3>
+          <p class="text-slate-300 mt-1">Data capture SDK & local encryption.</p>
+        </li>
+        <li class="mb-10 ml-6">
+          <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-brand-500 text-slate-900 font-bold">2</span>
+          <h3 class="text-xl font-semibold">Q1 2026 — Beta Marketplace</h3>
+          <p class="text-slate-300 mt-1">Listings, bids, & settlement flows.</p>
+        </li>
+        <li class="mb-10 ml-6">
+          <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-brand-500 text-slate-900 font-bold">3</span>
+          <h3 class="text-xl font-semibold">Q2 2026 — DAO Governance</h3>
+          <p class="text-slate-300 mt-1">Community proposals & treasury.</p>
+        </li>
+        <li class="ml-6">
+          <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-brand-500 text-slate-900 font-bold">4</span>
+          <h3 class="text-xl font-semibold">Q3 2026 — Public Mainnet Launch</h3>
+          <p class="text-slate-300 mt-1">Rewards program & growth.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- COMMUNITY / WAITLIST -->
+  <section id="community" class="relative bg-[#0b1020] py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-3xl font-bold">Join the ZDatar Community</h2>
+          <p class="mt-4 text-slate-300">Be early. Get updates, test builds, and governance invites.</p>
+          <div class="mt-6 flex gap-3">
+            <a href="#" class="inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:border-brand-300/60">Discord</a>
+            <a href="#" class="inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:border-brand-300/60">Telegram</a>
+            <a href="#" class="inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:border-brand-300/60">X / Twitter</a>
+            <a href="#" class="inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:border-brand-300/60">GitHub</a>
+          </div>
+        </div>
+        <div id="waitlist" class="glass rounded-2xl p-6 border">
+          <h3 class="text-xl font-semibold">Join Waitlist</h3>
+          <p class="mt-2 text-slate-300">Leave your email to be first in line.</p>
+          <form class="mt-4 flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); alert('Thanks! You\'re on the list.');">
+            <input type="email" required placeholder="you@example.com" class="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-300/60" />
+            <button type="submit" class="rounded-xl bg-brand-500 px-6 py-3 text-slate-900 font-semibold hover:bg-brand-400 shadow-glow">Notify Me</button>
+          </form>
+          <p class="mt-3 text-xs text-slate-400">We’ll never sell your email. One‑click unsubscribe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="relative bg-[#0a0f1d] border-t border-white/5 py-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <div class="text-lg font-semibold">ZDatar</div>
+          <div class="text-slate-400 text-sm">Reclaim your digital value.</div>
+        </div>
+        <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-300">
+          <a href="#" class="hover:text-brand-200">About</a>
+          <a href="#" class="hover:text-brand-200">Blog</a>
+          <a href="#" class="hover:text-brand-200">Whitepaper</a>
+          <a href="#" class="hover:text-brand-200">DAO Governance</a>
+          <a href="#" class="hover:text-brand-200">Privacy</a>
+          <a href="#" class="hover:text-brand-200">Contact</a>
+        </nav>
+      </div>
+      <div class="mt-8 text-xs text-slate-500">© <span id="y"></span> ZDatar. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu toggle
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', ()=> menu.classList.toggle('hidden'));
+
+    // smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if(id && id.length>1){
+          const el = document.querySelector(id);
+          if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+        }
+      })
+    })
+
+    // year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
