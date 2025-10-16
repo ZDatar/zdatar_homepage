@@ -1,17 +1,17 @@
 FROM nginx:alpine
 
-# Install OpenSSL for SSL certificate generation (if needed)
-RUN apk add --no-cache openssl
+# Install required packages
+RUN apk add --no-cache openssl gettext
 
 # Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy the landing page
-COPY index.html /usr/share/nginx/html/index.html
+# Copy the landing page as template
+COPY index.html /usr/share/nginx/html/index.html.template
 
-# Copy the wait script
-COPY wait-for-ssl.sh /wait-for-ssl.sh
-RUN chmod +x /wait-for-ssl.sh
+# Copy the entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # Create SSL directory
 RUN mkdir -p /etc/nginx/ssl
@@ -19,5 +19,5 @@ RUN mkdir -p /etc/nginx/ssl
 # Expose HTTPS port
 EXPOSE 443
 
-# Use the wait script instead of starting nginx directly
-CMD ["/wait-for-ssl.sh"]
+# Use the entrypoint script
+CMD ["/entrypoint.sh"]

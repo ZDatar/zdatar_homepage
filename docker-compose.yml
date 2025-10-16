@@ -16,10 +16,10 @@ services:
     restart: always
     ports:
       - "9443:443"
+    environment:
+      - GOOGLE_SCRIPT_URL=${GOOGLE_SCRIPT_URL}
     volumes:
       - ./ssl:/etc/nginx/ssl:ro
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./index.html:/usr/share/nginx/html/index.html:ro
     depends_on:
       - ssl-generator
 

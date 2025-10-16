@@ -501,7 +501,7 @@
 
     // Send email to Google Sheets
     async function sendToExternalService(email) {
-      const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; // Replace with your Google Apps Script URL
+      const GOOGLE_SCRIPT_URL = '${GOOGLE_SCRIPT_URL}'; // Injected from environment variable
       
       try {
         const response = await fetch(GOOGLE_SCRIPT_URL, {

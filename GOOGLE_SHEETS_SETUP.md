@@ -34,14 +34,17 @@ This guide will help you set up Google Sheets integration for your ZDatar waitli
 5. Click **"Deploy"**
 6. **Copy the Web App URL** (it looks like: `https://script.google.com/macros/s/.../exec`)
 
-## 🔗 **Step 4: Update Your Website**
+## 🔗 **Step 4: Configure Environment Variables**
 
-1. Open your `index.html` file
-2. Find this line:
-   ```javascript
-   const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+1. Copy the example environment file:
+   ```bash
+   cp .env.example .env
    ```
-3. Replace `YOUR_GOOGLE_SCRIPT_URL_HERE` with your Web App URL from Step 3
+2. Open the `.env` file
+3. Replace `YOUR_GOOGLE_SCRIPT_URL_HERE` with your Web App URL from Step 3:
+   ```bash
+   GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/YOUR_ACTUAL_SCRIPT_ID/exec
+   ```
 
 ## ✅ **Step 5: Test the Integration**
 
