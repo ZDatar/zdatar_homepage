@@ -9,11 +9,15 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Copy the landing page
 COPY index.html /usr/share/nginx/html/index.html
 
+# Copy the wait script
+COPY wait-for-ssl.sh /wait-for-ssl.sh
+RUN chmod +x /wait-for-ssl.sh
+
 # Create SSL directory
 RUN mkdir -p /etc/nginx/ssl
 
 # Expose HTTPS port
 EXPOSE 443
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Use the wait script instead of starting nginx directly
+CMD ["/wait-for-ssl.sh"]
