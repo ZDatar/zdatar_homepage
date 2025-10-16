@@ -1,6 +1,15 @@
 version: '3.8'
 
 services:
+  ssl-generator:
+    image: alpine:latest
+    container_name: zdatar-ssl-generator
+    volumes:
+      - ./ssl:/ssl
+      - ./generate-ssl.sh:/generate-ssl.sh:ro
+    command: sh /generate-ssl.sh
+    restart: "no"
+
   zdatar-web:
     build: .
     container_name: zdatar-landingpage
@@ -13,22 +22,7 @@ services:
       - ./index.html:/usr/share/nginx/html/index.html:ro
     depends_on:
       - ssl-generator
-    networks:
-      - zdatar-network
-
-  ssl-generator:
-    image: alpine:latest
-    container_name: zdatar-ssl-generator
-    volumes:
-      - ./ssl:/ssl
-      - ./generate-ssl.sh:/generate-ssl.sh:ro
-    command: sh /generate-ssl.sh
-    networks:
-      - zdatar-network
 
 networks:
-  zdatar-network:
+  default:
     driver: bridge
-
-volumes:
-  ssl-certs:
